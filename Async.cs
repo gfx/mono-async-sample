@@ -9,11 +9,15 @@ class C {
         var destination = args[1];
 
         Task.Run( async () => {
-            using (FileStream sourceStream = File.Open(source, FileMode.Open))
-            using (FileStream destinationStream = File.Create(destination))
-            {
-                await sourceStream.CopyToAsync(destinationStream);
-            }
+            await FileCopyAsync(source, destination);
         }).Wait();
+    }
+
+    private async static Task FileCopyAsync(string source, string destination) {
+        using (var sourceStream      = File.Open(source, FileMode.Open))
+        using (var destinationStream = File.Create(destination))
+        {
+            await sourceStream.CopyToAsync(destinationStream);
+        }
     }
 }
