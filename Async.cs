@@ -1,3 +1,4 @@
+// requires Mono C# compiler version 3.0
 using System;
 using System.IO;
 using System.Threading.Tasks;
